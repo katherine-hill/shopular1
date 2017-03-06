@@ -1,0 +1,41 @@
+<!doctype html>
+<html ng-app="Shopular" lang="en">
+
+<head>
+    <title>Shopular</title>
+    <link rel="stylesheet" href="./lib/styles/main.css">
+</head>
+
+<body ng-controller="InventoryController as invenCtrl">
+
+    <main>
+        <header>
+            Shopular
+        </header>
+        <table>
+            <tr>
+
+                <th>Name</th>
+                <th>Color</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+
+            <tr ng-repeat='items in invenCtrl.allItems'>
+                <td>{{items.name}}</td>
+                <td>{{items.color}}</td>
+                <td>{{items.quantity}}</td>
+                <td>{{items.price * invenCtrl.tax - items.discount | currency}} <img ng-src={{invenCtrl.image}} ng-show="items.discount"></td>
+
+            </tr>
+
+        </table>
+
+    </main>
+    <script src="src/js/vendor/jquery.min.js"></script>
+    <script src="src/js/vendor/angular.min.js"></script>
+    <script src="src/js/app.js"></script>
+    <script src="src/js/service/productsService.js"></script>
+</body>
+
+</html>
